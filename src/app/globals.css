@@ -1,1 +1,118 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+@plugin "tailwindcss-animate";
+
+@theme {
+  --color-green-500: #24ae7c;
+  --color-green-600: #0d2a1f;
+
+  --color-blue-500: #79b5ec;
+  --color-blue-600: #152432;
+
+  --color-red-500: #f37877;
+  --color-red-600: #3e1716;
+  --color-red-700: #f24e43;
+
+  --color-light-200: #e8e9e9;
+
+  --color-dark-200: #0d0f10;
+  --color-dark-300: #131619;
+  --color-dark-400: #1a1d21;
+  --color-dark-500: #363a3d;
+  --color-dark-600: #76828d;
+  --color-dark-700: #abb8c4;
+
+  --font-sans: var(--font-sans), sans-serif;
+}
+@layer base {
+  body {
+    font-family: var(--font-sans);
+  }
+}
+@layer utilities {
+  .bg-appointments {
+    background-image: url("/assets/images/appointments-bg.png");
+  }
+
+  .bg-pending {
+    background-image: url("/assets/images/pending-bg.png");
+  }
+
+  .bg-cancelled {
+    background-image: url("/assets/images/cancelled-bg.png");
+  }
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes caret-blink {
+    0%,
+    70%,
+    100% {
+      opacity: 1;
+    }
+    20%,
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .animate-accordion-down {
+    animation: accordion-down 0.2s ease-out;
+  }
+
+  .animate-accordion-up {
+    animation: accordion-up 0.2s ease-out;
+  }
+
+  .animate-caret-blink {
+    animation: caret-blink 1.25s ease-out infinite;
+  }
+  .text-14-regular {
+    @apply text-[14px] leading-[18px] font-medium;
+  }
+  .side-img {
+    @apply hidden h-full object-cover md:block;
+  }
+}
+
+@layer components {
+  .container {
+    max-width: 1400px;
+    padding: 2rem;
+  }
+  .remove-scrollbar::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    border-radius: 0px;
+  }
+
+  .remove-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .remove-scrollbar::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 0px;
+  }
+
+  .remove-scrollbar::-webkit-scrollbar-thumb:hover {
+    /* background: #1e2238; */
+    background: transparent;
+  }
+}
